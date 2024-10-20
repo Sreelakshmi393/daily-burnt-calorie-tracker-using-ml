@@ -24,31 +24,6 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 - MatPlotlib
 - Seaborn
   
-## Perfomance of Algorithms
-### - Linear Regressor
-  |      Metric     |  Training Data  |   Testing Data  |
-  |-----------------|-----------------|-----------------|
-  |    R2-Score     |       0.968     |      0.964      |
-  |       MAE       |       8.275     |      8.556      |
-  |       MSE       |      125.10     |     139.346     |
-
-
-### - RandomForest Regressor
-  |      Metric     |  Training Data  |   Testing Data  |
-  |-----------------|-----------------|-----------------|
-  |    R2-Score     |       0.999     |      0.997      |
-  |       MAE       |       0.640     |      1.799      |
-  |       MSE       |       1.090     |      8.504      |
-
-
-### - XGBoost Regressor
-  |      Metric     |  Training Data  |   Testing Data  |
-  |-----------------|-----------------|-----------------|
-  |    R2-Score     |       0.999     |      0.998      |
-  |       MAE       |       0.306     |      1.305      |
-  |       MSE       |       0.190     |      3.955      |
-
-
 ## Updates
 
 ### 26/09/2024 - System Setup
@@ -99,6 +74,7 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
   |    R2-Score     |       0.999     |      0.998      |
   |       MAE       |       0.306     |      1.305      |
   |       MSE       |       0.190     |      3.955      |
+
 **Impact**: Done with Machine learning part of the project
 **Next Steps**: Start working on web application
 
@@ -111,14 +87,14 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 #### 2 Modules – Gym Member & Trainer
 
 ##### Gym Member
-              - Register
-              - Login
-              - Input data and calculate burned calories using machine learning model
-              - View trainers feedback
+- Register
+- Login
+- Input data and calculate burned calories using machine learning model
+- View trainers feedback
 ##### Trainer 
-              - Login
-              - View and track members daily performance
-              - Give personalized feedback 
+- Login
+- View and track members daily performance
+- Give personalized feedback 
 
 
 
