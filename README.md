@@ -51,21 +51,32 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 
 ## Updates
 
-### [Date] - Update Title
-- **Summary**: A short summary of the update.
+### 26/09/2024 - System Setup
+- **Summary**: Installation of tools and platforms
 - **Changes Made**:
-  - [Change 1: Description]
-  - [Change 2: Description]
-- **Impact**: Describe how these changes affect the project or users.
-- **Next Steps**: Outline the next steps or planned future updates.
+  - [Change 1: Collected Dataset]
+  - [Change 2: Set Ananconda Environment]
+  - [Change 3: Installed tools like Pandas, Numpy, Matplotlib, Scikit-learn and Jupyter Notebook]
+- **Impact**: System ready for building Machine Learning model.
+- **Next Steps**: Data preprocessing.
 
-### [Date] - Update Title
-- **Summary**: 
+### 03/10/2024 - Data Preprocessing
+- **Summary**: Preperation an analysis of data for building Machine Learning model
 - **Changes Made**:
-  - [Change 1: Description]
-  - [Change 2: Description]
-- **Impact**: 
-- **Next Steps**: 
+  - [Change 1: Preprocessed data- filled Null values and label encoding of categorical column]
+  - [Change 2: Visualized data using Matplotlib and Seaborn]
+  - [Change 3: Choose algorithms to be tried out - Linear Regressor, RnadomForest Regressor, XGBoost Regressor]
+- **Impact**: Prepared data for building Machine Learning model
+- **Next Steps**: Building and evaluating models using each algorithm
+
+### 03/10/2024 - Data Preprocessing
+**Summary**: Preperation an analysis of data for building Machine Learning model
+**Changes Made**:
+  - [Change 1: Preprocessed data- filled Null values and label encoding of categorical column]
+  - [Change 2: Visualized data using Matplotlib and Seaborn]
+  - [Change 3: Choose algorithms to be tried out - Linear Regressor, RnadomForest Regressor, XGBoost Regressor]
+**Impact**: Prepared data for building Machine Learning model
+**Next Steps**: Building and evaluating models using each algorithm
 
 ## Installation
 Instructions for installing and setting up the project.
