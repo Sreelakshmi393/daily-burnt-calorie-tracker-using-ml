@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date 
+import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gym_management.db'  # SQLite database
@@ -128,7 +129,7 @@ def admin_dashboard():
 @app.route('/member')
 def member_dashboard():
     if 'username' in session:
-        return "Welcome to the member dashboard"
+        return render_template('member_dashboard.html')
     else:
         return redirect(url_for('login'))
     
@@ -136,6 +137,24 @@ def member_dashboard():
 def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
+
+
+@app.route('/calculate_calorie', methods=['GET', 'POST'])
+def calculate_calorie():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    # Fetch user details from database based on session username
+    user = db.session.query(Member).filter_by(uname=session['username']).first()
+    
+    if request.method == 'POST':
+        # Collect the form data and pass it to your ML model here
+        # ...
+        return redirect(url_for('member_dashboard'))
+
+    # Set the minimum date to today for the date input
+    min_date = datetime.date.today().isoformat()
+    return render_template('calculate_calorie.html', user=user, min_date=min_date)
 
 
 if __name__ == '__main__':

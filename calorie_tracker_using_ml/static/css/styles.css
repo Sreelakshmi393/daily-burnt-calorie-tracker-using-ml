@@ -319,4 +319,127 @@ footer {
     bottom: 0;
 }
 
+/* Member dashboard */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../images/gym_motivation.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 50px 0 10px;
+    color: #f7d794;
+}
+
+header p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #dfe6e9;
+}
+
+.dashboard-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.option {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 40px;
+    width: 200px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover {
+    background-color: #00cec9;
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+footer p {
+    margin-top: 50px;
+    color: #636e72;
+}
+
+/* Calorie calculation page */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('static/images/workout_background.jpg')no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 40px 0 10px;
+    color: #f7d794;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dfe6e9;
+}
+
+.form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00cec9;
+}
+
 

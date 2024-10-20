@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Fitness Journey</h1>
+        <p>Keep pushing yourself and track your progress!</p>
+    </header>
+    
+    <main>
+        <div class="dashboard-options">
+            <a href="/calculate_calorie" class="option">
+                <div class="icon">&#128170;</div>
+                <div class="text">Calculate Burnt Calories</div>
+            </a>
+            <a href="/view_history" class="option">
+                <div class="icon">&#128197;</div>
+                <div class="text">View Workout History</div>
+            </a>
+            <a href="/view_feedback" class="option">
+                <div class="icon">&#128221;</div>
+                <div class="text">Trainer Feedback</div>
+            </a>
+            <a href="/logout" class="option">
+                <div class="icon">&#128274;</div>
+                <div class="text">Logout</div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Burnt Calorie Tracking System. Keep pushing your limits!</p>
+    </footer>
+</body>
+</html>
