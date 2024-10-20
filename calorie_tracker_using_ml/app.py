@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, request, s
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date 
 import datetime
+import pickle
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gym_management.db'  # SQLite database
@@ -155,6 +156,50 @@ def calculate_calorie():
     # Set the minimum date to today for the date input
     min_date = datetime.date.today().isoformat()
     return render_template('calculate_calorie.html', user=user, min_date=min_date)
+
+
+
+
+# Load the trained model
+with open('calories-prediction-data/model.pkl', 'rb') as model_file:
+    model = pickle.load(model_file)
+
+# Mapping for categorical input
+gender_mapping = {
+    'male': 0,
+    'female': 1
+}
+
+@app.route('/calculations')
+def calculation():
+    return render_template('calculate_calorie.html')
+
+@app.route('/calculate', methods=['POST'])
+def predict():
+    # Get user input from the form
+    gender_input = request.form['gender'].lower()
+    age = int(request.form['age'])
+    height = float(request.form['height'])
+    weight = float(request.form['weight'])
+    duration = float(request.form['duration'])
+    heart_rate = float(request.form['heart_rate'])
+    temperature = float(request.form['body_temp'])
+
+    # Convert categorical input to numerical
+    if gender_input in gender_mapping:
+        gender_numeric = gender_mapping[gender_input]
+    else:
+        return "Invalid input for gender."
+
+    # Prepare input for the model (modify according to your model's input structure)
+    model_input = [[gender_numeric, age, height, weight, duration, heart_rate, temperature]]  # If other features are needed, include them as well
+
+    # Make prediction
+    prediction = model.predict(model_input)
+
+    # Return the prediction result
+    return f'The predicted output is: {prediction[0]}'
+
 
 
 if __name__ == '__main__':
