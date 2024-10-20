@@ -84,7 +84,7 @@ Instructions for installing and setting up the project.
 ## Usage
 Details on how to use the project, including examples.
 
-## Contributing
+## Contributing 
 Guidelines for contributing to the project.
 
 ## License
