@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3c34905e-1172-46e4-b5bf-e3a2d04866e0)# Burnt Calorie Tracker Using Machine Learning
+# Burnt Calorie Tracker Using Machine Learning
 
 ## Overview
 Gym members lack an efficient and accurate method to track the calories they burn during workouts. Existing solutions are often manual, inaccurate, or not integrated with gym management systems, making it difficult for both members and instructors to monitor progress and adjust workout plans accordingly.
@@ -76,6 +76,29 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
   - [Change 2: Trained these three models using these three algorithms and performed hyperparameter tuning]
   - [Change 3: Evaluated each model using the evaluation metrices and found XGBoost has more accuarcy]
   - [Change 4: Exported model as .pkl file]
+#### Perfomance of Algorithms
+##### - Linear Regressor
+  |      Metric     |  Training Data  |   Testing Data  |
+  |-----------------|-----------------|-----------------|
+  |    R2-Score     |       0.968     |      0.964      |
+  |       MAE       |       8.275     |      8.556      |
+  |       MSE       |      125.10     |     139.346     |
+
+
+##### - RandomForest Regressor
+  |      Metric     |  Training Data  |   Testing Data  |
+  |-----------------|-----------------|-----------------|
+  |    R2-Score     |       0.999     |      0.997      |
+  |       MAE       |       0.640     |      1.799      |
+  |       MSE       |       1.090     |      8.504      |
+
+
+##### - XGBoost Regressor
+  |      Metric     |  Training Data  |   Testing Data  |
+  |-----------------|-----------------|-----------------|
+  |    R2-Score     |       0.999     |      0.998      |
+  |       MAE       |       0.306     |      1.305      |
+  |       MSE       |       0.190     |      3.955      |
 **Impact**: Done with Machine learning part of the project
 **Next Steps**: Start working on web application
 
@@ -85,24 +108,19 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 - Setting up conda env - conda create --prefix ./env pandas numpy matplotlib scikit-learn jupyter
 
 ## Usage
-2 Modules – Gym Member & Trainer
+#### 2 Modules – Gym Member & Trainer
 
-Gym Member
+##### Gym Member
               - Register
               - Login
               - Input data and calculate burned calories using machine learning model
               - View trainers feedback
-Trainer 
+##### Trainer 
               - Login
               - View and track members daily performance
               - Give personalized feedback 
 
 
-## Contributing 
-Guidelines for contributing to the project.
-
-## License
-Information about the project's license.
 
 
 
