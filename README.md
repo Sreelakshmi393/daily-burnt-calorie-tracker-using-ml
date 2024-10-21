@@ -11,7 +11,6 @@ Gym members lack an efficient and accurate method to track the calories they bur
 - The solution will be implemented as a web application and can be integrated with existing gym management systems for real-time tracking and improved fitness management.
 
 
-
 ## Dataset 
 https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 
