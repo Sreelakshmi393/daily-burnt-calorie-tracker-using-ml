@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+</head>
+<body>
+
+    <div class="prediction-container">
+        <div class="prediction-title">Calories Burnt Prediction</div>
+        <div class="prediction-value">{{ predicted_calories }} kcal</div>
+        <!--<div class="prediction-note">This is an estimate based on your inputs.</div>-->
+        <a href="/calculate_calorie" class="new-prediction-btn">Make Another Prediction</a>
+    </div>
+    
+</body>
+</html>

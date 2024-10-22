@@ -46,16 +46,6 @@ with app.app_context():
 def home():
     return render_template('index.html')
 
-# Login route
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         # Handle login logic here
-#         username = request.form['username']
-#         password = request.form['password']
-#         # Authenticate user logic
-#         return redirect(url_for('home'))
-#     return render_template('login.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -74,19 +64,6 @@ def login():
             return "Invalid credentials"
     
     return render_template('login.html')
-
-# Registration route
-# @app.route('/register', methods=['GET', 'POST'])
-# def register():
-#     if request.method == 'POST':
-#         # Handle registration logic here
-#         name = request.form['name']
-#         email = request.form['email']
-#         username = request.form['username']
-#         password = request.form['password']
-#         # Add the user to the database (not implemented)
-#         return redirect(url_for('login'))
-#     return render_template('register.html')
 
 
 
@@ -196,9 +173,11 @@ def predict():
 
     # Make prediction
     prediction = model.predict(model_input)
+    
 
     # Return the prediction result
-    return f'The predicted output is: {prediction[0]}'
+    # return f'The predicted output is: {prediction[0]}'
+    return render_template('result.html', predicted_calories=prediction)
 
 
 
