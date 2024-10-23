@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Performance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="performance-header">
+        <h1>View Member Performance</h1>
+        <p>Select a member to view their workout performance.</p>
+    </header>
+
+    <main>
+        <div class="performance-container">
+            <form action="/performance" method="POST">
+                <div class="input-group">
+                    <label for="uname">Select Member:</label>
+                    <select id="uname" name="uname" required>
+                        <option value="" disabled selected>Select a member</option>
+                        {% for user in users %}
+                            <option value="{{ user }}">{{ user }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">View Performance</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Performance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="performance-header">
+        <h1>View Member Performance</h1>
+        <p>Select a member to view their workout performance.</p>
+    </header>
+
+    <main>
+        <div class="performance-container">
+            <form action="/view_performance" method="POST">
+                <div class="input-group">
+                    <label for="uname">Select Member:</label>
+                    <select id="uname" name="uname" required>
+                        <option value="" disabled selected>Select a member</option>
+                        {% for user in users %}
+                            <option value="{{ user }}">{{ user }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn">View Performance</button>
+            </form>
+        </div>
+
+        {% if workouts %}
+        <div class="workout-table-container">
+            <h2>Workout Details for {{ selected_user }}</h2>
+            <table class="workout-table">
+                <thead>
+                    <tr>
+                        <th>Workout ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Burnt Calorie</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for workout in workouts %}
+                    <tr>
+                        <td>{{ workout.workout_id }}</td>
+                        <td>{{ workout.uname }}</td>
+                        <td>{{ workout.date }}</td>
+                        <td>{{ workout.calorie }}</td>
+                        <td>
+                            <a href="{{ url_for('feedback', workout_id=workout.workout_id) }}" class="btn">Fill Feedback</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
+

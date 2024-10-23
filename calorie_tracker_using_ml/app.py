@@ -199,7 +199,46 @@ def predict():
     # return f'The predicted output is: {prediction[0]}'
     return render_template('result.html', predicted_calories=rounded_prediction)
 
+# @app.route('/view_performance')
+# def view_performance():
+#     # Fetch all unique usernames from the workouts table
+#     users = db.session.query(Workout.uname).distinct().all()
+#     users = [user[0] for user in users]  # Extract usernames from tuples
 
+#     return render_template('view_performance.html', users=users)
+
+@app.route('/view_performance', methods=['GET', 'POST'])
+def view_performance():
+    if request.method == 'POST':
+        selected_user = request.form['uname']
+        # Fetch workouts for the selected user
+        workouts = Workout.query.filter_by(uname=selected_user).all()
+
+        users = db.session.query(Workout.uname).distinct().all()
+        users = [user[0] for user in users]  # Extract usernames from tuples
+
+        return render_template('view_performance.html', users=users, workouts=workouts, selected_user=selected_user)
+
+    # Initial GET request
+    users = db.session.query(Workout.uname).distinct().all()
+    users = [user[0] for user in users]  # Extract usernames from tuples
+
+    return render_template('view_performance.html', users=users)
+
+@app.route('/feedback/<int:workout_id>')
+def feedback(workout_id):
+    return render_template('feedback.html', workout_id=workout_id)
+
+@app.route('/submit_feedback/<int:workout_id>', methods=['POST'])
+def submit_feedback(workout_id):
+    feedback = request.form['feedback']
+    selected_user = request.form['uname']
+    # You can store the feedback in the database (create a feedback model)
+    new_feedback = Remark(workout_id=workout_id, uname=selected_user, feedback=feedback)
+    db.session.add(new_feedback)
+    db.session.commit()
+    
+    return redirect(url_for('view_performance'))
 
 
 if __name__ == '__main__':
