@@ -10,6 +10,12 @@
     <header>
         <h1>Calculate Your Burnt Calories</h1>
         <p>Enter your details to get an estimate</p>
+        <!-- <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit" class="">Logout</button>
+        </form> -->
+        <a href="/logout" class="logout-btn">
+            <div class="text">Logout</div>
+        </a> 
     </header>
     
     <main>
@@ -58,6 +64,11 @@
                 <button type="submit" class="btn">Calculate</button>
             </form>
         </div>
+        <!-- <div class="logout-container">
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit" class="btn">Logout</button>
+            </form>
+        </div> -->
     </main>
 </body>
 </html>

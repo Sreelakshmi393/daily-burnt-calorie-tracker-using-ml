@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date 
+from datetime import date,time
 import datetime
 import pickle
+
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gym_management.db'  # SQLite database
@@ -23,13 +25,18 @@ class Member(db.Model):
     kind = db.Column(db.String(20), nullable=False)  # Could represent membership type or other info
 
 
-# Define the Workouts model
+#Define the Workouts model
 class Workout(db.Model):
-    workout_id = db.Column(db.Integer, primary_key=True)  # Primary Key
+    workout_id = db.Column(db.Integer, primary_key=True,autoincrement=True)  # Primary Key
+    uname = db.Column(db.String(50), db.ForeignKey('member.uname'), nullable=False)  # Foreign Key referencing Members
+    date = db.Column(db.Date, nullable=False, default=date.today)  # Date of the workout
+    calorie = db.Column(db.Float, nullable=False)  # Calories burnt
+
+class Workouts(db.Model):
+    workout_id = db.Column(db.Integer, primary_key=True,autoincrement=True)  # Primary Key
     uname = db.Column(db.String(50), db.ForeignKey('member.uname'), nullable=False)  # Foreign Key referencing Members
     date = db.Column(db.Date, nullable=False, default=date.today)  # Date of the workout
     calorie = db.Column(db.Integer, nullable=False)  # Calories burnt
-
 
 class Remark(db.Model):
     remark_id = db.Column(db.Integer, primary_key=True)  # Primary Key
@@ -41,7 +48,6 @@ class Remark(db.Model):
 with app.app_context():
     db.create_all()
 
-# Home route
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -131,7 +137,7 @@ def calculate_calorie():
         return redirect(url_for('member_dashboard'))
 
     # Set the minimum date to today for the date input
-    min_date = datetime.date.today().isoformat()
+    min_date = datetime.date.today().isoformat()  
     return render_template('calculate_calorie.html', user=user, min_date=min_date)
 
 
@@ -142,7 +148,7 @@ with open('calories-prediction-data/model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
 # Mapping for categorical input
-gender_mapping = {
+gender_mapping = { 
     'male': 0,
     'female': 1
 }
@@ -151,8 +157,10 @@ gender_mapping = {
 def calculation():
     return render_template('calculate_calorie.html')
 
+
 @app.route('/calculate', methods=['POST'])
 def predict():
+    
     # Get user input from the form
     gender_input = request.form['gender'].lower()
     age = int(request.form['age'])
@@ -161,6 +169,7 @@ def predict():
     duration = float(request.form['duration'])
     heart_rate = float(request.form['heart_rate'])
     temperature = float(request.form['body_temp'])
+  
 
     # Convert categorical input to numerical
     if gender_input in gender_mapping:
@@ -173,11 +182,23 @@ def predict():
 
     # Make prediction
     prediction = model.predict(model_input)
-    
+    rounded_prediction = round(prediction[0], 2)
+
+    #  # Retrieve username from session and store the predicted calorie value in the workout table
+    uname = session['username']
+    workout_date = date.today()  # You can also use request.form['date'] if date is provided in the form
+
+   
+    new_workout = Workout(uname=uname, date=workout_date, calorie=rounded_prediction)
+        
+    # Add to the database
+    db.session.add(new_workout)
+    db.session.commit()
 
     # Return the prediction result
     # return f'The predicted output is: {prediction[0]}'
-    return render_template('result.html', predicted_calories=prediction)
+    return render_template('result.html', predicted_calories=rounded_prediction)
+
 
 
 

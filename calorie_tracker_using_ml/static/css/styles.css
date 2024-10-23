@@ -454,52 +454,20 @@ button:hover {
     background-color: #00cec9;
 }
 
+.logout-btn {
+    background-color: #4f2d2d; /* Red color */
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    cursor: pointer;
+    font-size: 0.9em;
+    float: right; /* Align to the right */
+    margin-top: 10px; /* Add some space from the top */
+    margin-right: 20px;
+    border-radius: 5px; /* Rounded corners */
+}
 
-/* Prediction Result 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-.result-container {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-h1 {
-    color: #4caf50;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-p {
-    font-size: 1.2rem;
-    color: #333333;
-}
-.prediction {
-    font-size: 3rem;
-    color: #ff5722;
-    font-weight: bold;
-}
-.button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.button:hover {
-    background-color: #45a049;
-} */
 
-/* Prediction Result */
 /* Calorie Prediction Display */
 .prediction-container {
     background-color: rgba(255, 255, 255, 0.9);
@@ -532,18 +500,8 @@ p {
 
 /* Button for New Prediction */
 .new-prediction-btn {
-    /* margin-top: 20px;
-    padding-top: 100px;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;*/
     display: inline-block;
-    margin-top: 20px; /* Add some space between the button and the previous element */
+    margin-top: 20px; 
     padding: 10px 20px;
     background-color: #00b894;
     color: white;
@@ -559,3 +517,121 @@ p {
 .new-prediction-btn:hover {
     background-color: #2980b9;
 }
+
+
+/* Admin page */
+/* .admin-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-page header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.admin-page nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.admin-page nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.admin-page nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-page main {
+    padding: 20px;
+    text-align: center;
+}
+
+.admin-page footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.admin-page footer p {
+    color: #636e72;
+}
+
+.admin-page .option-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.admin-page .option-card h2 {
+    margin-bottom: 15px;
+    color: #2e86de;
+}
+
+.admin-page .option-card p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.admin-page .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #2e86de;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-page .btn:hover {
+    background-color: #2164a7;
+} */
+
+.admin-page .option-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin: 20px auto;
+}
+
+.admin-page .option-card h2 {
+    margin-bottom: 15px;
+    color: #2e86de;
+}
+
+.admin-page .option-card p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.admin-page .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #2e86de;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-page .btn:hover {
+    background-color: #2164a7;
+}
+
+
