@@ -32,11 +32,7 @@ class Workout(db.Model):
     date = db.Column(db.Date, nullable=False, default=date.today)  # Date of the workout
     calorie = db.Column(db.Float, nullable=False)  # Calories burnt
 
-class Workouts(db.Model):
-    workout_id = db.Column(db.Integer, primary_key=True,autoincrement=True)  # Primary Key
-    uname = db.Column(db.String(50), db.ForeignKey('member.uname'), nullable=False)  # Foreign Key referencing Members
-    date = db.Column(db.Date, nullable=False, default=date.today)  # Date of the workout
-    calorie = db.Column(db.Integer, nullable=False)  # Calories burnt
+
 
 class Remark(db.Model):
     remark_id = db.Column(db.Integer, primary_key=True)  # Primary Key
