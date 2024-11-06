@@ -203,38 +203,100 @@ def predict():
 
 #     return render_template('view_performance.html', users=users)
 
+# @app.route('/view_performance', methods=['GET', 'POST'])
+# def view_performance():
+#     if request.method == 'POST':
+#         selected_user = request.form['uname']
+#         # Fetch workouts for the selected user
+#         workouts = Workout.query.filter_by(uname=selected_user).all()
+
+#         users = db.session.query(Workout.uname).distinct().all()
+#         users = [user[0] for user in users]  # Extract usernames from tuples
+
+#         return render_template('view_performance.html', users=users, workouts=workouts, selected_user=selected_user)
+
+#     # Initial GET request
+#     users = db.session.query(Workout.uname).distinct().all()
+#     users = [user[0] for user in users]  # Extract usernames from tuples
+
+#     return render_template('view_performance.html', users=users)
+
 @app.route('/view_performance', methods=['GET', 'POST'])
 def view_performance():
     if request.method == 'POST':
         selected_user = request.form['uname']
-        # Fetch workouts for the selected user
         workouts = Workout.query.filter_by(uname=selected_user).all()
-
-        users = db.session.query(Workout.uname).distinct().all()
-        users = [user[0] for user in users]  # Extract usernames from tuples
-
+        users = [user[0] for user in db.session.query(Workout.uname).distinct().all()]
         return render_template('view_performance.html', users=users, workouts=workouts, selected_user=selected_user)
-
-    # Initial GET request
-    users = db.session.query(Workout.uname).distinct().all()
-    users = [user[0] for user in users]  # Extract usernames from tuples
-
+    
+    users = [user[0] for user in db.session.query(Workout.uname).distinct().all()]
     return render_template('view_performance.html', users=users)
+
 
 @app.route('/feedback/<int:workout_id>')
 def feedback(workout_id):
     return render_template('feedback.html', workout_id=workout_id)
 
+# @app.route('/submit_feedback/<int:workout_id>', methods=['POST'])
+# def submit_feedback(workout_id):
+#     feedback = request.form['feedback']
+#     selected_user = request.form['uname']
+#     # You can store the feedback in the database (create a feedback model)
+#     new_feedback = Remark(workout_id=workout_id, uname=selected_user, feedback=feedback)
+#     db.session.add(new_feedback)
+#     db.session.commit()
+    
+#     return redirect(url_for('view_performance'))
+
+
+# Route to display feedback
+@app.route('/view_feedback')
+def view_feedback():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    username = session['username']
+    # Query to join Workout and Remark tables
+    feedback_data = (
+        db.session.query(Workout.date, Remark.feedback)
+        .join(Remark, Workout.workout_id == Remark.workout_id)
+        .filter(Workout.uname == username)
+        .order_by(Workout.date.desc())
+        .all()
+    )
+
+    return render_template('view_feedback.html', feedback_data=feedback_data)
+
+# # Logout route
+# @app.route('/logout')
+# def logout():
+#     session.pop('username', None)
+#     return redirect(url_for('login'))
+
+# Feedback submission route
 @app.route('/submit_feedback/<int:workout_id>', methods=['POST'])
 def submit_feedback(workout_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
     feedback = request.form['feedback']
-    selected_user = request.form['uname']
-    # You can store the feedback in the database (create a feedback model)
-    new_feedback = Remark(workout_id=workout_id, uname=selected_user, feedback=feedback)
+    uname = session['username']  # Use session username directly
+    new_feedback = Remark(workout_id=workout_id, uname=uname, feedback=feedback)
     db.session.add(new_feedback)
     db.session.commit()
     
     return redirect(url_for('view_performance'))
+
+@app.route('/view_history')
+def view_history():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    # Fetch workout history for the logged-in user
+    username = session['username']
+    workout_history = Workout.query.filter_by(uname=username).order_by(Workout.date.desc()).all()
+    
+    return render_template('view_history.html', workout_history=workout_history)
 
 
 if __name__ == '__main__':

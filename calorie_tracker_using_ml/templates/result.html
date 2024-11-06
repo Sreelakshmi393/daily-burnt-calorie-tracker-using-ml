@@ -14,6 +14,9 @@
         <div class="prediction-value">{{ predicted_calories }} kcal</div>
         <!--<div class="prediction-note">This is an estimate based on your inputs.</div>-->
         <a href="/calculate_calorie" class="new-prediction-btn">Make Another Prediction</a>
+        <br>
+        <br>
+        <button class="logout-btn" onclick="location.href='{{ url_for('logout') }}'">Logout</button>
     </div>
     
 </body>

@@ -10,18 +10,20 @@
     <header class="feedback-header">
         <h1>Workout Feedback</h1>
         <p>Provide feedback for your workout session.</p>
+        <button class="logout-btn" onclick="location.href='{{ url_for('logout') }}'">Logout</button>
     </header>
 
     <main>
         <div class="feedback-container">
-            <form action="/submit_feedback/{{ workout_id }}" method="POST">
+            <form action="{{ url_for('submit_feedback', workout_id=workout_id) }}" method="POST">
                 <div class="input-group">
+                    <input type="hidden" name="uname" value="{{ selected_user }}">
                     <label for="feedback">Feedback:</label>
                     <textarea id="feedback" name="feedback" rows="4" required></textarea>
                 </div>
 
                 <button type="submit" class="btn">Submit Feedback</button>
-            </form>
+            </form> 
         </div>
     </main>
 </body>
