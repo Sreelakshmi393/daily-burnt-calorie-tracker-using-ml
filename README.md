@@ -23,33 +23,6 @@ https://www.kaggle.com/code/muskanjha/calories-burnt-prediction
 - MatPlotlib
 - Seaborn
   
-## Updates
-
-### 26/09/2024 - System Setup
-- **Summary**: Installation of tools and platforms
-- **Changes Made**:
-  - Change 1: Collected Dataset
-  - Change 2: Set Ananconda Environment
-  - Change 3: Installed tools like Pandas, Numpy, Matplotlib, Scikit-learn and Jupyter Notebook
-- **Impact**: System ready for building Machine Learning model.
-- **Next Steps**: Data preprocessing.
-
-### 03/10/2024 - Data Preprocessing
-- **Summary**: Preperation an analysis of data for building Machine Learning model
-- **Changes Made**:
-  - Change 1: Preprocessed data- filled Null values and label encoding of categorical column
-  - Change 2: Visualized data using Matplotlib and Seaborn
-  - Change 3: Choose algorithms to be tried out - Linear Regressor, RnadomForest Regressor, XGBoost Regressor
-- **Impact**: Prepared data for building Machine Learning model
-- **Next Steps**: Building and evaluating models using each algorithm
-
-### 10/10/2024 - Model Building and Evaluation
-**Summary**: Build three machine learning models using Linear Regressor, RandoForest Regressor and XGBoost Regressor and Evaluated using R2-Score, MAE, and MSE.
-**Changes Made**:
-  - Change 1: Imported train_test_split() and all three chosen algorthms from Sklearn
-  - Change 2: Trained these three models using these three algorithms and performed hyperparameter tuning
-  - Change 3: Evaluated each model using the evaluation metrices and found XGBoost has more accuarcy
-  - Change 4: Exported model as .pkl file
 #### Perfomance of Algorithms
 ##### - Linear Regressor
   |      Metric     |  Training Data  |   Testing Data  |
